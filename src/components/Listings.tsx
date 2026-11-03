@@ -1,6 +1,7 @@
 import { listings } from "@/data/listings";
 import Icon from "./Icon";
 import { waLink, WHATSAPP } from "@/config";
+import { VisitButton } from "./VisitModal";
 
 const TC = 6.96;
 const toBs = (usd: string) => {
@@ -42,7 +43,7 @@ export default function Listings() {
                 {l.verified && <p className="mt-4 flex items-start gap-1.5 text-xs text-brand"><Icon name="check" className="h-4 w-4 shrink-0" />{l.verified}</p>}
                 <div className="mt-auto grid grid-cols-2 gap-2 pt-5">
                   <a href={waLink(`Hola, me interesa: ${l.title} (${l.price})`)} className="flex items-center justify-center gap-1.5 rounded-xl bg-[#25D366] py-2.5 text-sm font-semibold text-ink hover:brightness-95"><Icon name="chat" className="h-4 w-4" />{WHATSAPP ? "WhatsApp" : "Consultar"}</a>
-                  <a href="#contacto" className="rounded-xl border border-ink/15 py-2.5 text-center text-sm font-semibold text-ink hover:bg-sand">{l.type === "Auto" ? "Agendar prueba" : "Agendar visita"}</a>
+                  <VisitButton title={`${l.title} · ${l.city}`} type={l.type} className="rounded-xl border border-ink/15 py-2.5 text-center text-sm font-semibold text-ink hover:bg-sand">{l.type === "Auto" ? "Agendar prueba" : "Agendar visita"}</VisitButton>
                 </div>
               </div>
             </article>

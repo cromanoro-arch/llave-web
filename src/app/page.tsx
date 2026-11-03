@@ -9,10 +9,11 @@ import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import WhatsAppFab from "@/components/WhatsAppFab";
+import { VisitProvider } from "@/components/VisitModal";
 
 export default function Home() {
   return (
-    <>
+    <VisitProvider>
       <Header />
       <main>
         <Hero />
@@ -26,6 +27,6 @@ export default function Home() {
       </main>
       <Footer />
       <WhatsAppFab />
-    </>
+    </VisitProvider>
   );
 }

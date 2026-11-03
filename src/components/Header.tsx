@@ -1,4 +1,5 @@
 import Icon from "./Icon";
+import { VisitButton } from "./VisitModal";
 
 const links = [
   ["Explorar", "#explorar"],
@@ -21,7 +22,10 @@ export default function Header() {
             <a key={h} href={h} className="hover:text-brand">{l}</a>
           ))}
         </nav>
-        <a href="#contacto" className="rounded-full bg-clay px-4 py-2 text-sm font-semibold text-white shadow-card hover:bg-clay/90">Publicar o consultar</a>
+        <div className="flex items-center gap-2">
+          <a href="#contacto" className="hidden rounded-full border border-ink/15 px-4 py-2 text-sm font-semibold text-ink hover:bg-white sm:inline-block">Publicar</a>
+          <VisitButton className="rounded-full bg-clay px-4 py-2 text-sm font-semibold text-white shadow-card hover:bg-clay/90">Agendar visita</VisitButton>
+        </div>
       </div>
     </header>
   );
