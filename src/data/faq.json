@@ -1,0 +1,186 @@
+[
+ {
+  "id": "casas",
+  "label": "Casas",
+  "items": [
+   {
+    "q": "¿Cuál es el precio final, en qué moneda y es negociable?",
+    "a": "El precio se publica en USD o Bs, indicando si el dólar es al tipo oficial o al paralelo. A ese precio hay que sumarle cerca de un 5% en costos de cierre ([eju.tv, 2018](https://eju.tv/?p=1099462))."
+   },
+   {
+    "q": "¿Dónde está exactamente y qué hay cerca (colegios, trabajo, transporte)?",
+    "a": "Se muestra en el mapa de la ficha. La ubicación es el primer factor de compra en la región ([Gestión, 2025](https://gestion.pe/tu-dinero/precio-ubicacion-o-seguridad-lo-que-realmente-pesa-al-elegir-un-proyecto-inmobiliario-noticia/))."
+   },
+   {
+    "q": "¿Puedo comprarla con crédito de vivienda social?",
+    "a": "Sí, si es su primera vivienda y la casa vale hasta 460.000 UFV. La tasa máxima es de 5,5% a 6,5% según el valor ([DS 1842](https://www.lexivox.org/norms/BO-DS-N1842.xhtml))."
+   },
+   {
+    "q": "¿Los papeles están en orden?",
+    "a": "Pida el folio real actualizado, el testimonio, el plano catastral aprobado y el IPBI de las últimas 5 gestiones. Si la casa es bien ganancial, también hace falta la firma del cónyuge ([EGAF Abogados](https://egafabogados.com/faq/compra-venta-terrenos-inmuebles-bolivia))."
+   },
+   {
+    "q": "¿Es segura la zona?",
+    "a": "La seguridad es el segundo o tercer factor en la región ([Primicias, 2024](https://primicias.ec/noticias/economia/seguridad-compa-viviendas-ecuador)). La ficha indica muros perimetrales, condominio y vigilancia."
+   },
+   {
+    "q": "¿Cuántos m² tiene de terreno y cuántos construidos? ¿Hay construcción sin declarar?",
+    "a": "Compare los m² con el plano aprobado. Si hay ampliaciones que no figuran en él, habrá que regularizarlas."
+   },
+   {
+    "q": "¿Tiene todos los servicios conectados (agua, luz, gas domiciliario, alcantarillado)?",
+    "a": "Conviene verificarlo, sobre todo en zonas periurbanas. Esta pregunta es una inferencia: no hay % que la respalde."
+   },
+   {
+    "q": "¿Cuánto pago aparte del precio?",
+    "a": "El IMT del 3%, que se paga dentro de los 10 días hábiles siguientes a la minuta, más el abogado, el notario y la inscripción en DDRR. En total, hasta un 5% ([Bolivia.com, 2018](https://amp.bolivia.com/actualidad/economia/paso-a-paso-para-comprar-una-propiedad-en-bolivia-181530))."
+   },
+   {
+    "q": "¿Cuándo es realmente mía?",
+    "a": "Cuando la compra queda inscrita en Derechos Reales y recibe el folio real a su nombre, unos 20 días después de la inscripción ([eju.tv, 2018](https://eju.tv/?p=1099462))."
+   },
+   {
+    "q": "¿Necesito abogado propio?",
+    "a": "Sí. Use uno propio, no el del vendedor, y no entregue ningún anticipo antes de verificar los documentos en DDRR."
+   }
+  ]
+ },
+ {
+  "id": "deptos",
+  "label": "Departamentos",
+  "items": [
+   {
+    "q": "¿Cuál es el precio y acepta crédito VIS?",
+    "a": "El tope VIS para departamentos es de 400.000 UFV, menor que el de casas ([DS 1842](https://www.lexivox.org/norms/BO-DS-N1842.xhtml)). El simulador lo calcula con la UFV del día."
+   },
+   {
+    "q": "¿Cuánto son las expensas y qué cubren?",
+    "a": "La ficha detalla el monto y qué incluye: portería, ascensor, limpieza y áreas comunes. No hay un promedio boliviano publicado."
+   },
+   {
+    "q": "¿El departamento tiene folio real propio (está independizado en propiedad horizontal)?",
+    "a": "Debe tener un folio real individual en DDRR. Sin él, no se puede inscribir la compra ni hipotecarlo."
+   },
+   {
+    "q": "¿El parqueo y la baulera están incluidos e inscritos?",
+    "a": "Pregunte si tienen folio propio o si se venden aparte."
+   },
+   {
+    "q": "¿Qué seguridad y servicios hay cerca?",
+    "a": "En departamentos, la seguridad y la cercanía a servicios son lo que más se valora en Santa Cruz ([InfoCasas Bolivia, 2017](https://www.infocasas.com.bo:443/blog/que-buscan-los-millennials-en-bolivia-el-segmento-que-esta-cambiando-el-mercado))."
+   },
+   {
+    "q": "¿Es de entrega inmediata o en pozo? ¿Quién construye?",
+    "a": "En Santa Cruz, el 74% de las búsquedas de compra eran de entrega inmediata (2018) ([InfoCasas 2018](https://cdn1.infocasas.com.uy/web/5b2aa1436f5ec_infocdn__bo--informe-infocasas-busqueda.pdf)). El respaldo del constructor pesa cerca de 10% en Lima."
+   },
+   {
+    "q": "¿Qué áreas comunes tiene?",
+    "a": "En Lima se valoran las áreas verdes (40,6%), las losas deportivas y las parrillas ([Gestión, 2025](https://gestion.pe/tu-dinero/precio-ubicacion-o-seguridad-lo-que-realmente-pesa-al-elegir-un-proyecto-inmobiliario-noticia/))."
+   },
+   {
+    "q": "¿Hay ascensor y generador? ¿Se permiten mascotas?",
+    "a": "El reglamento de copropiedad lo define. Pídalo antes de firmar."
+   },
+   {
+    "q": "¿Puedo tomarlo en anticrético?",
+    "a": "Sí, por un plazo máximo de 5 años. Inscriba el contrato en DDRR y revise que no haya hipotecas previas ([Opinión, 2019](https://www.opinion.com.bo/articulo/informe-especial/puntos-considerar-evitar-estafa/20190922115025727579.html))."
+   },
+   {
+    "q": "¿Qué impuestos y trámites pago?",
+    "a": "Los mismos que en una casa: IMT del 3% (o IT si vende una constructora; dato pendiente de confirmar con la Ley 843), notario e inscripción en DDRR."
+   }
+  ]
+ },
+ {
+  "id": "terrenos",
+  "label": "Terrenos",
+  "items": [
+   {
+    "q": "¿El vendedor es el dueño inscrito?",
+    "a": "Revíselo usted mismo en el folio real de Derechos Reales. Si no figura allí, no es el dueño legal ([EGAF Abogados](https://egafabogados.com/faq/compra-venta-terrenos-inmuebles-bolivia))."
+   },
+   {
+    "q": "¿Tiene gravámenes, hipotecas o juicios?",
+    "a": "Saque el certificado alodial el mismo día de la firma. Cuesta entre Bs 56 y 142 ([CasasenBolivia, 2024](https://casasenbolivia.com/el-certificado-alodial-pasos-requisitos-y-todos-los-detalles-derechos-reales-bolivia/))."
+   },
+   {
+    "q": "¿La urbanización está aprobada por la alcaldía?",
+    "a": "Pida la resolución municipal y el plano de lote aprobado. En 2016, más del 50% de las urbanizaciones de Santa Cruz eran irregulares ([eju.tv / El Día](https://eju.tv/?p=733928))."
+   },
+   {
+    "q": "¿Me pueden vender un lote que ya es de otro?",
+    "a": "Sí, ya ha pasado: en Arbieto hubo al menos 76 víctimas en 2024 ([Unitel](https://unitel.bo/noticias/seguridad/estafa-multiple-al-menos-76-personas-denuncian-que-les-vendieron-terrenos-que-ya-tenian-propietarios-JG13373749)). Protocolice e inscriba en DDRR de inmediato, porque en caso de doble venta gana quien inscribe primero."
+   },
+   {
+    "q": "¿Hay riesgo de avasallamiento?",
+    "a": "Visite el lote, hable con los vecinos y confirme las colindancias. Un plano o un recibo no prueban la propiedad."
+   },
+   {
+    "q": "¿Se puede construir? ¿Es zona de riesgo?",
+    "a": "Pida a la alcaldía el uso de suelo, la línea y nivel y el mapa de riesgos. En Bajo Llojeta el 73% del terreno es de alto riesgo ([Visión 360, 2024](https://eju.tv/2024/12/bajo-llojeta-el-73-del-terreno-de-la-zona-de-desastre-es-calificado-como-de-alto-riesgo))."
+   },
+   {
+    "q": "¿Tiene agua, luz y alcantarillado?",
+    "a": "Verifíquelo en el lugar. No hay datos sobre la cobertura de servicios en loteamientos."
+   },
+   {
+    "q": "¿Qué pasa si me atraso con las cuotas?",
+    "a": "Lea la cláusula de pérdida del lote. Algunas quitan el lote tras dos cuotas impagas, y un urbanista la califica de irregular ([eju.tv / El Día](https://eju.tv/?p=733928))."
+   },
+   {
+    "q": "¿Puedo usar crédito de vivienda para comprar el terreno?",
+    "a": "Solo si es para construir. En ese caso, el terreno no puede superar el 40% del valor total financiado ([DS 1842](https://www.lexivox.org/norms/BO-DS-N1842.xhtml))."
+   },
+   {
+    "q": "¿Y si el terreno es rural?",
+    "a": "Necesita título ejecutorial, certificado de catastro rural del INRA y plano georreferenciado ([EGAF Abogados](https://egafabogados.com/faq/compra-venta-terrenos-inmuebles-bolivia))."
+   }
+  ]
+ },
+ {
+  "id": "autos",
+  "label": "Autos",
+  "items": [
+   {
+    "q": "¿El precio es en dólares o en bolivianos, y a qué tipo de cambio?",
+    "a": "Se indica en la ficha. El paralelo rondó los 10 Bs/USD frente a 6,96 oficial ([Rio Times, 2025](https://www.riotimesonline.com/bolivias-economic-emergency-sparks-a-fuel-shock-and-currency-shift/))."
+   },
+   {
+    "q": "¿Cuánto consume?",
+    "a": "La ficha muestra el consumo en km/L y el costo por cada 100 km. Desde diciembre de 2025, la gasolina cuesta 6,96 Bs/L y el diésel 9,80 Bs/L (DS 5503)."
+   },
+   {
+    "q": "¿El auto está legal (no es chuto) y el RUAT está a nombre del vendedor?",
+    "a": "Compare el chasis y el motor con el RUAT original. A julio de 2026 no había ninguna ley vigente que legalizara los chutos ([Los Tiempos, 2026](https://www.lostiempos.com/actualidad/pais/20260630/ministro-zamora-abre-posibilidad-analizar-nacionalizacion-chutos-todo-es))."
+   },
+   {
+    "q": "¿Tiene deudas de impuestos, multas o prenda bancaria?",
+    "a": "Consulte en la alcaldía o en el RUAT. La deuda recae sobre el titular registrado ([Descomplícate](https://descomplicate.substack.com/p/lo-que-nadie-te-dijo-sobre-los-impuestos))."
+   },
+   {
+    "q": "(Usado) ¿Qué kilometraje y estado mecánico tiene?",
+    "a": "Llévelo a revisión con un mecánico de confianza antes de pagar. Más del 40% del parque boliviano es anterior a 2011 ([La Razón, 2026](https://eju.tv/?p=5009663))."
+   },
+   {
+    "q": "¿Hay financiamiento?",
+    "a": "Consulte las opciones con el vendedor o el banco. No hay tasas vehiculares verificadas para publicar. En Latam, el pago pesa para el 18% de los compradores ([Teads 2024](https://www.laestrella.com.pa/economia/dos-de-cada-tres-personas-en-latam-desea-comprar-un-auto-segun-estudio-YX7716212))."
+   },
+   {
+    "q": "¿Cómo se hace la transferencia y quién paga el impuesto?",
+    "a": "Los pasos son: minuta, liquidación y pago del impuesto, notaría y nuevo RUAT ([Los Tiempos, 2021](https://www.lostiempos.com/actualidad/cochabamba/20211003/transferencia-cambio-radicatoria-se-haran-dia-ciudad)). El impuesto lo debe el vendedor."
+   },
+   {
+    "q": "(Nuevo) ¿Qué garantía y servicio técnico tiene? ¿Hay repuestos?",
+    "a": "La ficha detalla la garantía y la red de talleres. La calidad y el desempeño son los factores que más pesan en Brasil (65% y 56%) ([Deloitte](https://www.deloitte.com/br/pt/about/press-room/global-automotive-consumer-study.html))."
+   },
+   {
+    "q": "¿Me conviene un híbrido o un eléctrico?",
+    "a": "Ahorran combustible, pero La Paz y El Alto tienen solo 3 cargadores públicos ([SCMP, 2026](https://www.scmp.com/news/world/americas/article/3353036/evs-surge-bolivia-amid-fuel-shortages-junk-gas-scandal))."
+   },
+   {
+    "q": "¿Qué pasa si no registro la transferencia?",
+    "a": "Las deudas siguen a nombre del vendedor y el comprador no figura como dueño. Registre la transferencia el mismo día de la compra."
+   }
+  ]
+ }
+]

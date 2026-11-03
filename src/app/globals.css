@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { @apply bg-sand text-ink antialiased; }
+
+details > summary { list-style: none; cursor: pointer; }
+details > summary::-webkit-details-marker { display: none; }
+details[open] .chev { transform: rotate(45deg); }
+
+.container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+.eyebrow { @apply text-xs font-semibold uppercase tracking-[0.18em] text-clay; }
+.h2 { @apply font-display text-3xl leading-tight text-ink sm:text-4xl; }
