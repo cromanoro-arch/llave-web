@@ -6,6 +6,7 @@ import { VisitButton } from "./VisitModal";
 const TC = 6.96;
 const toBs = (usd: string) => {
   const n = Number(usd.replace(/[^\d]/g, ""));
+  if (!n) return "";
   return `Bs ${(n * TC).toLocaleString("es-BO", { maximumFractionDigits: 0 })}`;
 };
 
@@ -26,13 +27,13 @@ export default function Listings() {
               <div className={`relative grid h-44 place-items-center bg-gradient-to-br ${l.hue}`}>
                 <Icon name={l.icon} className="h-16 w-16 text-ink/40" />
                 <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold">{l.type}</span>
-                <span className="absolute right-4 top-4 rounded-full bg-ink/70 px-2.5 py-1 text-xs text-white">{l.photos} fotos</span>
+                {l.photos > 0 && <span className="absolute right-4 top-4 rounded-full bg-ink/70 px-2.5 py-1 text-xs text-white">{l.photos} fotos</span>}
                 {l.tag && <span className="absolute bottom-4 left-4 flex items-center gap-1 rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white"><Icon name="shield" className="h-3.5 w-3.5" />{l.tag}</span>}
               </div>
               <div className="flex flex-1 flex-col p-5">
                 <div className="flex items-baseline gap-2">
                   <p className="font-display text-2xl text-brand">{l.price}</p>
-                  <p className="text-xs text-ink-mute">{toBs(l.price)} (TC oficial)</p>
+                  {toBs(l.price) && <p className="text-xs text-ink-mute">{toBs(l.price)} (TC oficial)</p>}
                 </div>
                 <h3 className="mt-1 font-semibold">{l.title}</h3>
                 <p className="mt-1 flex items-center gap-1 text-sm text-ink-mute"><Icon name="pin" className="h-4 w-4" />{l.city}</p>
