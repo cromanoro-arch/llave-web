@@ -1,11 +1,11 @@
-// Pegar en la hoja "Llave - Consultas y visitas" → Extensiones → Apps Script.
+// Pegar en script.google.com → Nuevo proyecto (o en la hoja → Extensiones → Apps Script).
 // Implementar → Nueva implementación → Aplicación web
 //   Ejecutar como: Yo   ·   Quién tiene acceso: Cualquier usuario
 // Copiar la URL (termina en /exec) y ponerla en src/config.ts → SHEETS_URL.
 
 function doPost(e) {
   const d = JSON.parse(e.postData.contents || "{}");
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  const ss = SpreadsheetApp.openById("1VKrRU2tFL6vzjWMpG469DkIr0XXt4ZRRN6Co5qH0qEM");
   const now = new Date();
   const clean = (v) => String(v || "").slice(0, 500).replace(/^[=+\-@]/, "'$&");
 
