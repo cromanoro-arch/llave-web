@@ -5,16 +5,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: { DEFAULT: "#13212f", soft: "#3b4a59", mute: "#64748b" },
-        sand: { DEFAULT: "#f7f3ec", deep: "#efe7da" },
-        brand: { DEFAULT: "#0f5c58", dark: "#0a4340", light: "#e3f1ef" },
-        clay: { DEFAULT: "#c8643b", light: "#fbe9e1" },
+        paper: { DEFAULT: "#EFE9DC", card: "#FBF8F1", dark: "#E2DACB" },
+        ink: { DEFAULT: "#111111", soft: "#333333", mute: "#5C5C5C" },
+        red: { DEFAULT: "#E11D2A", dark: "#B8141F" },
+        yel: { DEFAULT: "#FFD400", tape: "#FFE14D" },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "Segoe UI", "Roboto", "sans-serif"],
-        display: ["var(--font-display)", "Georgia", "serif"],
+        head: ["var(--font-head)", "Arial Narrow", "sans-serif"],
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
-      boxShadow: { card: "0 1px 2px rgba(19,33,47,.06), 0 8px 24px -12px rgba(19,33,47,.18)" },
     },
   },
   plugins: [],

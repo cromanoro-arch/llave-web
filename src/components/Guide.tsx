@@ -31,30 +31,28 @@ export default function Guide() {
   const [k, setK] = useState<keyof typeof flows>("inmueble");
   const f = flows[k];
   return (
-    <section id="guia" className="bg-brand py-20 text-white">
+    <section id="guia" className="border-y-2 border-ink bg-ink py-14 text-white">
       <div className="container-x">
-        <p className="eyebrow !text-clay-light">Guía de compra</p>
-        <h2 className="mt-3 max-w-2xl font-display text-3xl sm:text-4xl">Seis pasos para que sea tuyo de verdad</h2>
-        <div className="mt-8 inline-flex rounded-full bg-white/10 p-1">
+        <span className="inline-block bg-yel px-2 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-ink">Guía de compra</span>
+        <h2 className="h-cond mt-3 text-5xl italic sm:text-7xl">Seis pasos para que sea <span className="text-yel-tape">tuyo de verdad</span></h2>
+        <div className="mt-6 flex flex-wrap">
           {(Object.keys(flows) as (keyof typeof flows)[]).map((key) => (
             <button key={key} onClick={() => setK(key)}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition ${k === key ? "bg-white text-brand" : "text-white/80 hover:text-white"}`}>
+              className={`border-2 border-white px-4 py-2 font-head text-lg font-extrabold uppercase ${k === key ? "bg-white text-ink" : "text-white hover:bg-white/10"}`}>
               {flows[key].label}
             </button>
           ))}
         </div>
-        <ol className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="mt-8 grid border-t-2 border-white sm:grid-cols-2 lg:grid-cols-3">
           {f.steps.map((s, i) => (
-            <li key={s.t} className="rounded-3xl bg-white/[.07] p-6 ring-1 ring-white/10">
-              <div className="flex items-center gap-3">
-                <span className="font-display text-4xl text-clay-light">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="text-lg font-semibold">{s.t}</h3>
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-white/75">{s.d}</p>
+            <li key={s.t} className="border-b border-white/30 py-5 sm:pr-6 lg:[&:not(:nth-child(3n))]:border-r lg:[&:not(:nth-child(3n))]:border-white/30 lg:px-6">
+              <span className="font-mono text-xs uppercase text-yel-tape">Paso {String(i + 1).padStart(2, "0")}</span>
+              <h3 className="mt-1 font-head text-3xl font-black uppercase leading-none">{s.t}</h3>
+              <p className="mt-2 leading-relaxed text-white/80">{s.d}</p>
             </li>
           ))}
         </ol>
-        <p className="mt-8 flex items-start gap-2 text-sm text-white/70"><Icon name="alert" className="mt-0.5 h-4 w-4 shrink-0" />No entregues ningún anticipo antes de verificar los documentos. Los costos de cierre suman cerca del 5% del valor.</p>
+        <p className="mt-6 flex items-start gap-2 font-mono text-xs uppercase text-white/70"><Icon name="alert" className="h-4 w-4 shrink-0 text-red" />No entregues ningún anticipo antes de verificar los documentos. Los gastos de cierre suman cerca del 5% del valor.</p>
       </div>
     </section>
   );

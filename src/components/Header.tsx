@@ -1,32 +1,47 @@
-import Icon from "./Icon";
 import { VisitButton } from "./VisitModal";
+import Today from "./Today";
+import { listings } from "@/data/listings";
 
 const links = [
-  ["Explorar", "#explorar"],
-  ["Qué preguntan", "#datos"],
+  ["Clasificados", "#explorar"],
+  ["Lo que importa", "#datos"],
   ["Guía de compra", "#guia"],
   ["Crédito", "#credito"],
-  ["Preguntas frecuentes", "#faq"],
+  ["Consultorio", "#faq"],
 ];
+
+const edicion = String(Math.max(...listings.map((l) => l.id))).padStart(4, "0");
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-ink/5 bg-sand/85 backdrop-blur">
-      <div className="container-x flex h-16 items-center justify-between gap-4">
-        <a href="#" className="flex items-center gap-2 font-display text-xl text-ink">
-          <span className="grid h-9 w-9 place-items-center rounded-xl bg-brand text-white"><Icon name="key" /></span>
-          Llave
-        </a>
-        <nav className="hidden items-center gap-6 text-sm text-ink-soft md:flex">
-          {links.map(([l, h]) => (
-            <a key={h} href={h} className="hover:text-brand">{l}</a>
-          ))}
-        </nav>
-        <div className="flex items-center gap-2">
-          <a href="#contacto" className="hidden rounded-full border border-ink/15 px-4 py-2 text-sm font-semibold text-ink hover:bg-white sm:inline-block">Publicar</a>
-          <VisitButton className="rounded-full bg-clay px-4 py-2 text-sm font-semibold text-white shadow-card hover:bg-clay/90">Agendar visita</VisitButton>
+    <>
+      <div className="container-x">
+        <div className="flex flex-wrap justify-between gap-x-4 gap-y-1 border-b border-ink py-2.5 font-mono text-[11px] uppercase">
+          <Today />
+          <span className="hidden sm:inline">Edición N.º {edicion} · Dólar oficial Bs 6,96</span>
+          <span>Precio: gratis</span>
+        </div>
+        <div className="mt-3 flex flex-col border-[3px] border-ink sm:flex-row">
+          <a href="#" className="bg-red px-5 py-2 font-head text-6xl font-black uppercase italic leading-none tracking-tight text-white sm:text-8xl">
+            La Llave
+          </a>
+          <div className="flex flex-1 flex-col justify-between gap-2 bg-paper-card px-4 py-3 sm:px-6">
+            <span className="label-mono">Los clasificados de Bolivia · Casas · Terrenos · Autos</span>
+            <p className="font-head text-2xl font-extrabold uppercase leading-tight sm:text-3xl">¡Casas, terrenos y autos con papeles en regla!</p>
+            <span className="label-mono">Verificados antes de publicar · Desde 2026</span>
+          </div>
         </div>
       </div>
-    </header>
+      <header className="sticky top-0 z-40 mt-3 border-y-2 border-ink bg-paper/95 backdrop-blur">
+        <div className="container-x flex h-12 items-center justify-between gap-4">
+          <nav className="flex items-center gap-5 overflow-x-auto font-head text-lg font-extrabold uppercase">
+            {links.map(([l, h]) => (
+              <a key={h} href={h} className="shrink-0 hover:text-red">{l}</a>
+            ))}
+          </nav>
+          <VisitButton className="btn-ink shrink-0">Agendar<span className="hidden sm:inline">&nbsp;visita</span>&nbsp;→</VisitButton>
+        </div>
+      </header>
+    </>
   );
 }

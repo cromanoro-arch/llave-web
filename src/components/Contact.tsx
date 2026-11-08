@@ -4,17 +4,18 @@ import { waLink, WHATSAPP } from "@/config";
 
 export default function Contact() {
   return (
-    <section id="contacto" className="py-20">
-      <div className="container-x">
-        <div className="grid gap-8 overflow-hidden rounded-[2rem] bg-ink p-8 text-white sm:p-12 lg:grid-cols-2">
-          <div>
-            <p className="eyebrow">Hablemos</p>
-            <h2 className="mt-3 font-display text-3xl sm:text-4xl">¿Quieres vender o tienes una duda puntual?</h2>
-            <p className="mt-4 text-white/70">Déjanos tus datos y te respondemos en minutos, en horario de oficina. Publicar es simple: te pedimos los papeles, los verificamos y armamos tu aviso con fotos y precio claro.</p>
-            {WHATSAPP && <a href={waLink()} className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3 font-semibold text-ink hover:brightness-95"><Icon name="chat" />Escribir por WhatsApp</a>}
-          </div>
-          <ContactForm />
+    <section id="contacto" className="container-x py-14">
+      <div className="grid border-[3px] border-ink bg-paper-card lg:grid-cols-2">
+        <div className="border-b-[3px] border-ink p-8 lg:border-b-0 lg:border-r-[3px]">
+          <h2 className="sec-tag">Publique su aviso</h2>
+          <p className="h-cond mt-5 text-4xl sm:text-5xl">¿Vendes casa, terreno o auto?</p>
+          <p className="mt-4 text-lg leading-relaxed text-ink-soft">
+            Déjanos tus datos y te respondemos en minutos, en horario de oficina. Revisamos tus papeles, armamos la ficha con fotos y precio claro, y lo publicamos.
+          </p>
+          <p className="tape mt-6">Publicar es gratis</p>
+          {WHATSAPP && <a href={waLink()} className="btn-ink mt-6 gap-2"><Icon name="chat" className="h-4 w-4" />Escribir por WhatsApp</a>}
         </div>
+        <div className="p-8"><ContactForm /></div>
       </div>
     </section>
   );

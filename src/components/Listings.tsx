@@ -9,47 +9,49 @@ const toBs = (usd: string) => {
   if (!n) return "";
   return `Bs ${(n * TC).toLocaleString("es-BO", { maximumFractionDigits: 0 })}`;
 };
+const seccion: Record<string, string> = { Casa: "Casas", Departamento: "Deptos", Terreno: "Terrenos", Auto: "Autos" };
 
 export default function Listings() {
   return (
-    <section id="explorar" className="py-20">
-      <div className="container-x">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="eyebrow">Destacados</p>
-            <h2 className="h2 mt-3">Precio claro, papeles verificados, respuesta rápida</h2>
-          </div>
-          <p className="max-w-sm text-sm text-ink-soft">Cada aviso muestra el precio en dólares y bolivianos, la fecha en que revisamos sus papeles y un botón para consultar al instante.</p>
-        </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {listings.map((l) => (
-            <article key={l.id} className="group flex flex-col overflow-hidden rounded-3xl bg-white shadow-card transition hover:-translate-y-1">
-              <div className={`relative grid h-44 place-items-center bg-gradient-to-br ${l.hue}`}>
-                <Icon name={l.icon} className="h-16 w-16 text-ink/40" />
-                <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold">{l.type}</span>
-                {l.photos > 0 && <span className="absolute right-4 top-4 rounded-full bg-ink/70 px-2.5 py-1 text-xs text-white">{l.photos} fotos</span>}
-                {l.tag && <span className="absolute bottom-4 left-4 flex items-center gap-1 rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white"><Icon name="shield" className="h-3.5 w-3.5" />{l.tag}</span>}
-              </div>
-              <div className="flex flex-1 flex-col p-5">
-                <div className="flex items-baseline gap-2">
-                  <p className="font-display text-2xl text-brand">{l.price}</p>
-                  {toBs(l.price) && <p className="text-xs text-ink-mute">{toBs(l.price)} (TC oficial)</p>}
-                </div>
-                <h3 className="mt-1 font-semibold">{l.title}</h3>
-                <p className="mt-1 flex items-center gap-1 text-sm text-ink-mute"><Icon name="pin" className="h-4 w-4" />{l.city}</p>
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {l.specs.map((s) => <li key={s} className="rounded-lg bg-sand px-2.5 py-1 text-xs text-ink-soft">{s}</li>)}
-                  {l.extra && <li className="rounded-lg bg-clay-light px-2.5 py-1 text-xs text-clay">{l.extra}</li>}
-                </ul>
-                {l.verified && <p className="mt-4 flex items-start gap-1.5 text-xs text-brand"><Icon name="check" className="h-4 w-4 shrink-0" />{l.verified}</p>}
-                <div className="mt-auto grid grid-cols-2 gap-2 pt-5">
-                  <a href={waLink(`Hola, me interesa: ${l.title} (${l.price})`)} className="flex items-center justify-center gap-1.5 rounded-xl bg-[#25D366] py-2.5 text-sm font-semibold text-ink hover:brightness-95"><Icon name="chat" className="h-4 w-4" />{WHATSAPP ? "WhatsApp" : "Consultar"}</a>
-                  <VisitButton title={`${l.title} · ${l.city}`} type={l.type} className="rounded-xl border border-ink/15 py-2.5 text-center text-sm font-semibold text-ink hover:bg-sand">{l.type === "Auto" ? "Agendar prueba" : "Agendar visita"}</VisitButton>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
+    <section id="explorar" className="container-x py-12">
+      <div className="flex flex-wrap items-end justify-between gap-3 rule-double pb-3">
+        <h2 className="sec-tag">Clasificados</h2>
+        <p className="label-mono">{listings.length} avisos · precio en USD y Bs · papeles revisados</p>
+      </div>
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {listings.map((l) => (
+          <article key={l.id} className="relative flex flex-col border-2 border-ink bg-paper-card">
+            <div className="halftone relative h-40 border-b-2 border-ink">
+              <span className="absolute left-3 top-3 bg-ink px-2 py-1 font-mono text-[11px] font-semibold uppercase text-yel">
+                {seccion[l.type]} · Aviso {String(l.id).padStart(4, "0")}
+              </span>
+              <Icon name={l.icon} className="absolute inset-0 m-auto h-14 w-14 text-ink/50" />
+              {l.photos > 0 && <span className="absolute bottom-3 left-3 bg-paper-card px-2 py-0.5 font-mono text-[11px]">{l.photos} fotos</span>}
+            </div>
+            {l.tag && <span className="stamp absolute right-3 top-[132px]">{l.tag}</span>}
+            <div className="flex flex-1 flex-col p-5">
+              <p className="font-head text-4xl font-black italic uppercase leading-none text-red">{l.price}</p>
+              {toBs(l.price) && <p className="mt-1 font-mono text-[11px] text-ink-mute">{toBs(l.price)} · TC oficial</p>}
+              <h3 className="mt-2 font-serif text-xl font-semibold leading-tight">{l.title}</h3>
+              <p className="label-mono mt-1">{l.city}</p>
+              <dl className="mt-3 font-mono text-[12.5px]">
+                {l.specs.map((s) => (
+                  <div key={s} className="flex gap-2 border-t border-ink py-1.5"><span className="text-red">■</span>{s}</div>
+                ))}
+                {l.extra && <div className="flex gap-2 border-t border-ink py-1.5"><span className="text-red">■</span>{l.extra}</div>}
+              </dl>
+              {l.verified && <p className="mt-3 bg-ink px-3 py-2 font-mono text-[11px] font-semibold uppercase text-yel">✓ {l.verified}</p>}
+              <div className="mt-auto pt-4"><div className="grid grid-cols-2 border-2 border-ink">
+                <VisitButton title={`${l.title} · ${l.city}`} type={l.type} className="bg-red py-2.5 font-head text-base font-black uppercase text-white hover:bg-red-dark">
+                  {l.type === "Auto" ? "Agendar prueba" : "Agendar visita"}
+                </VisitButton>
+                <a href={waLink(`Hola, me interesa: ${l.title} (${l.price})`)} className="py-2.5 text-center font-head text-base font-black uppercase hover:bg-paper-dark">
+                  {WHATSAPP ? "WhatsApp" : "Consultar"}
+                </a>
+              </div></div>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

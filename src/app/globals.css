@@ -2,13 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; scroll-padding-top: 80px; }
-body { @apply bg-sand text-ink antialiased; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+body {
+  @apply bg-paper font-serif text-ink antialiased;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
 
 details > summary { list-style: none; cursor: pointer; }
 details > summary::-webkit-details-marker { display: none; }
 details[open] .chev { transform: rotate(45deg); }
 
-.container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
-.eyebrow { @apply text-xs font-semibold uppercase tracking-[0.18em] text-clay; }
-.h2 { @apply font-display text-3xl leading-tight text-ink sm:text-4xl; }
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+  .h-cond { @apply font-head font-black uppercase leading-[0.9] tracking-tight; }
+  .kicker { @apply inline-block bg-ink px-2 py-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-paper; }
+  .label-mono { @apply font-mono text-[11px] uppercase tracking-wider text-ink-mute; }
+  .rule-double { border-bottom: 4px double #111; }
+  .halftone { background-color: #cfc8b8; background-image: radial-gradient(#111 1.1px, transparent 1.3px); background-size: 6px 6px; }
+  .halftone-red { background-color: #e7e1d4; background-image: radial-gradient(#E11D2A 1.1px, transparent 1.3px); background-size: 7px 7px; }
+  .stamp { @apply inline-block -rotate-6 border-[3px] border-red bg-paper-card/90 px-2.5 py-0.5 font-head text-lg font-black uppercase tracking-wide text-red; }
+  .tape { @apply inline-block -rotate-3 border-[3px] border-ink bg-yel-tape px-3 py-1.5 font-head text-lg font-black uppercase; }
+  .sec-tag { @apply inline-block bg-red px-4 py-1 font-head text-4xl font-black uppercase italic leading-none text-white sm:text-5xl; }
+  .btn-ink { @apply inline-flex items-center justify-center bg-ink px-4 py-2.5 font-mono text-xs font-semibold uppercase tracking-wider text-yel hover:bg-ink-soft; }
+  .btn-red { @apply inline-flex items-center justify-center bg-red px-4 py-2.5 font-head text-lg font-black uppercase text-white hover:bg-red-dark; }
+  .field { @apply w-full border-2 border-ink bg-white px-3 py-2.5 font-serif text-base focus:outline-none focus:ring-2 focus:ring-yel; }
+}

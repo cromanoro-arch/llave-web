@@ -1,9 +1,9 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-ink/10 py-10 text-sm text-ink-mute">
-      <div className="container-x flex flex-col justify-between gap-4 sm:flex-row">
-        <p>© {new Date().getFullYear()} Llave · Casas, terrenos y autos en Bolivia</p>
-        <p className="max-w-xl">La información de trámites e impuestos es referencial y puede cambiar. Confirma montos y requisitos con Derechos Reales, tu alcaldía, el RUAT o tu banco antes de firmar.</p>
+    <footer className="container-x pb-24 pt-6">
+      <div className="border-t-4 border-double border-ink pt-4 font-mono text-[11px] uppercase leading-relaxed text-ink-mute sm:flex sm:justify-between sm:gap-8">
+        <p>© {new Date().getFullYear()} La Llave · Los clasificados de Bolivia</p>
+        <p className="mt-2 max-w-xl sm:mt-0">Información de trámites e impuestos referencial. Confirma montos y requisitos con Derechos Reales, tu alcaldía, el RUAT o tu banco antes de firmar.</p>
       </div>
     </footer>
   );
