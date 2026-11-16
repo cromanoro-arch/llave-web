@@ -6,6 +6,7 @@ import Guide from "@/components/Guide";
 import CreditCalculator from "@/components/CreditCalculator";
 import Verify from "@/components/Verify";
 import Verificador, { VerifyProvider } from "@/components/Verificador";
+import Ventajas from "@/components/Ventajas";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -25,6 +26,7 @@ export default function Home() {
         <CreditCalculator />
         <Verify />
         <Verificador />
+        <Ventajas />
         <Faq />
         <Contact />
       </main>

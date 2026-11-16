@@ -7,6 +7,7 @@ const links = [
   ["Lo que importa", "#datos"],
   ["Guía de compra", "#guia"],
   ["Verificar", "#verificar"],
+  ["Ventajas", "#ventajas"],
   ["Crédito", "#credito"],
   ["Consultorio", "#faq"],
 ];

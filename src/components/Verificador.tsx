@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { checks, type Kind } from "@/data/verificaciones";
+import { accessInfo, checks, type Access, type Kind } from "@/data/verificaciones";
 
 /* ---------- Ficha con las consultas oficiales ---------- */
 
@@ -20,33 +20,66 @@ function CopyDato({ value }: { value: string }) {
   );
 }
 
+const order: Access[] = ["gratis", "personal", "pago"];
+const badge: Record<Access, string> = {
+  gratis: "bg-ink text-yel",
+  personal: "bg-yel text-ink",
+  pago: "bg-red text-white",
+};
+
 export function CheckSheet({ kind, dato = "" }: { kind: Kind; dato?: string }) {
+  let n = 0;
   return (
-    <ol className="border-2 border-ink bg-paper-card">
-      {checks[kind].map((c, i) => (
-        <li key={c.title} className="grid gap-3 border-t-2 border-ink p-4 first:border-t-0 sm:grid-cols-[52px_1fr_auto] sm:items-start">
-          <span className="font-head text-4xl font-black leading-none text-red">{String(i + 1).padStart(2, "0")}</span>
-          <div>
-            <p className="label-mono">{c.org} · {c.mode}</p>
-            <h4 className="mt-1 font-head text-2xl font-black uppercase leading-none">{c.title}</h4>
-            <p className="mt-1.5 text-[15px] leading-snug text-ink-soft">{c.shows}</p>
-            <p className="mt-2 font-mono text-[11px] font-semibold uppercase">Qué dato poner:</p>
-            <ul className="font-mono text-[12.5px]">
-              {c.needs.map((n) => <li key={n} className="flex gap-2 py-0.5"><span className="text-red">■</span>{n}</li>)}
-            </ul>
-            {c.tip && <p className="mt-2 inline-block bg-yel-tape px-2 py-1 font-mono text-[11px]">☞ {c.tip}</p>}
-          </div>
-          {c.url ? (
-            <a href={c.url} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center justify-center whitespace-nowrap bg-ink px-4 py-2.5 font-head text-base font-black uppercase text-yel hover:bg-red hover:text-white sm:self-center">
-              {c.mode.startsWith("En oficina") ? "Ver requisitos ↗" : dato ? "Abrir y pegar ↗" : "Consultar ↗"}
-            </a>
-          ) : (
-            <span className="stamp self-center justify-self-start text-sm">En persona</span>
-          )}
-        </li>
-      ))}
-    </ol>
+    <div className="grid gap-6">
+      {order.map((a) => {
+        const list = checks[kind].filter((c) => c.access === a);
+        if (!list.length) return null;
+        return (
+          <section key={a}>
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-b-2 border-ink pb-2">
+              <h4 className={`px-2 py-1 font-head text-xl font-black uppercase leading-none ${badge[a]}`}>{accessInfo[a].label}</h4>
+              <p className="font-mono text-[11px] leading-5 text-ink-mute">{accessInfo[a].sub}</p>
+            </div>
+            <ol className="mt-3 border-2 border-ink bg-paper-card">
+              {list.map((c) => {
+                n += 1;
+                return (
+                  <li key={c.title} className="grid gap-3 border-t-2 border-ink p-4 first:border-t-0 sm:grid-cols-[52px_1fr_auto] sm:items-start">
+                    <span className="font-head text-4xl font-black leading-none text-red">{String(n).padStart(2, "0")}</span>
+                    <div>
+                      <p className="label-mono">{c.org}</p>
+                      <h5 className="mt-1 font-head text-2xl font-black uppercase leading-none">{c.title}</h5>
+                      <p className="mt-1.5 text-[15px] leading-snug text-ink-soft">{c.shows}</p>
+                      <p className="mt-2 font-mono text-[11px] font-semibold uppercase">Qué dato poner:</p>
+                      <ul className="font-mono text-[12.5px]">
+                        {c.needs.map((x) => <li key={x} className="flex gap-2 py-0.5"><span className="text-red">■</span>{x}</li>)}
+                      </ul>
+                      {c.how && (
+                        <>
+                          <p className="mt-3 font-mono text-[11px] font-semibold uppercase">Cómo hacerlo:</p>
+                          <ol className="mt-1 border-l-2 border-ink pl-3 text-[15px] leading-snug">
+                            {c.how.map((h, i) => <li key={h} className="flex gap-2 py-1"><b className="font-head text-lg leading-5 text-red">{i + 1}.</b>{h}</li>)}
+                          </ol>
+                        </>
+                      )}
+                      {c.tip && <p className="mt-2 inline-block bg-yel-tape px-2 py-1 font-mono text-[11px]">☞ {c.tip}</p>}
+                    </div>
+                    {c.url ? (
+                      <a href={c.url} target="_blank" rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center whitespace-nowrap bg-ink px-4 py-2.5 font-head text-base font-black uppercase text-yel hover:bg-red hover:text-white sm:self-center">
+                        {a === "pago" ? "Sitio oficial ↗" : dato && a === "gratis" ? "Abrir y pegar ↗" : "Consultar ↗"}
+                      </a>
+                    ) : (
+                      <span className="stamp self-center justify-self-start text-sm">En persona</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        );
+      })}
+    </div>
   );
 }
 
