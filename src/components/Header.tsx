@@ -6,6 +6,7 @@ const links = [
   ["Clasificados", "#explorar"],
   ["Lo que importa", "#datos"],
   ["Guía de compra", "#guia"],
+  ["Verificar", "#verificar"],
   ["Crédito", "#credito"],
   ["Consultorio", "#faq"],
 ];

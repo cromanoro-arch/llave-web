@@ -2,6 +2,7 @@ import { listings } from "@/data/listings";
 import Icon from "./Icon";
 import { waLink, WHATSAPP } from "@/config";
 import { VisitButton } from "./VisitModal";
+import { VerifyButton } from "./Verificador";
 
 const TC = 6.96;
 const toBs = (usd: string) => {
@@ -48,6 +49,11 @@ export default function Listings() {
                 <a href={waLink(`Hola, me interesa: ${l.title} (${l.price})`)} className="py-2.5 text-center font-head text-base font-black uppercase hover:bg-paper-dark">
                   {WHATSAPP ? "WhatsApp" : "Consultar"}
                 </a>
+                <VerifyButton
+                  target={{ title: `${l.title} · ${l.city}`, kind: l.type === "Auto" ? "Auto" : "Inmueble", dato: l.type === "Auto" ? l.placa : l.inmueble }}
+                  className="col-span-2 border-t-2 border-ink bg-yel py-2 font-head text-base font-black uppercase hover:bg-yel-tape">
+                  ⚖ Verificar deudas e impuestos ↗
+                </VerifyButton>
               </div></div>
             </div>
           </article>

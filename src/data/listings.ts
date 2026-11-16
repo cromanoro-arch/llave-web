@@ -9,6 +9,9 @@ export type Listing = {
   photos: number;
   verified?: string;
   extra?: string;
+  // Opcional: dato para verificar en sitios oficiales (placa del auto o N.º de inmueble del RUAT)
+  placa?: string;
+  inmueble?: string;
   hue: string;
   icon: "house" | "building" | "land" | "car";
 };
