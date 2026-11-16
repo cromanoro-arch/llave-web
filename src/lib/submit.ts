@@ -1,6 +1,6 @@
 import { SHEETS_URL } from "@/config";
 
-export type Payload = { kind: "visita" | "consulta"; [k: string]: string };
+export type Payload = { kind: "visita" | "consulta" | "publicar"; [k: string]: string };
 
 export async function submitForm(data: Payload): Promise<"ok" | "sin-conexion" | "error"> {
   if (!SHEETS_URL) {

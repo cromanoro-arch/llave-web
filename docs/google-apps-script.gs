@@ -9,7 +9,21 @@ function doPost(e) {
   const now = new Date();
   const clean = (v) => String(v || "").slice(0, 500).replace(/^[=+\-@]/, "'$&");
 
-  if (d.kind === "visita") {
+  if (d.kind === "publicar") {
+    // Formulario "Publica tu casa o auto" → pestaña CRM Avisos, en la primera fila libre.
+    const sh = ss.getSheetByName("CRM Avisos");
+    const fechas = sh.getRange("B2:B").getValues();
+    let fila = 2;
+    while (fila - 2 < fechas.length && fechas[fila - 2][0] !== "") fila++;
+    const num = (v) => { const n = Number(String(v || "").replace(/[^0-9]/g, "")); return n || ""; };
+    sh.getRange(fila, 1, 1, 21).setValues([[
+      "", now, clean(d.tipo), clean(d.ciudad), clean(d.zona), clean(d.resumen),
+      num(d.precio_usd), num(d.precio_bs), clean(d.nombre), clean(d.celular),
+      "Formulario de la web", "", "Por confirmar", clean(d.identificacion), "Sin revisar", "",
+      "Pendiente", "3. Interesado", "Escribir por WhatsApp y pedir fotos", now,
+      "Desde la web: " + clean(d.dueno) + " · acepta que lo contactemos",
+    ]]);
+  } else if (d.kind === "visita") {
     ss.getSheetByName("Visitas").appendRow([
       now, clean(d.aviso), clean(d.tipo), clean(d.nombre), clean(d.celular),
       clean(d.fecha), clean(d.horario), clean(d.modalidad), clean(d.comentario), "Pendiente",
@@ -22,7 +36,7 @@ function doPost(e) {
 
   // Aviso por correo al dueño de la hoja (opcional: borra estas líneas si no lo quieres).
   MailApp.sendEmail(Session.getEffectiveUser().getEmail(),
-    "Llave: nueva " + (d.kind === "visita" ? "solicitud de visita" : "consulta"),
+    "Llave: " + (d.kind === "publicar" ? "nuevo aviso para publicar" : d.kind === "visita" ? "nueva solicitud de visita" : "nueva consulta"),
     JSON.stringify(d, null, 2));
 
   return ContentService.createTextOutput(JSON.stringify({ ok: true }))
