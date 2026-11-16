@@ -13,7 +13,7 @@ export const waLink = (text = "Hola, quiero información") =>
 // Las que queden vacías no se muestran en el sitio.
 export const SOCIALS = {
   instagram: "lallave.bo",
-  tiktok: "",
+  tiktok: "lallave.bo",
   facebook: "lallave.bo",
 };
 
