@@ -9,6 +9,9 @@ export default function Verify() {
       <div className="rule-double pb-3">
         <span className="kicker">Compra segura</span>
         <h2 className="h-cond mt-3 text-5xl sm:text-7xl">Lo que revisamos antes de publicar</h2>
+        <p className="mt-3 max-w-2xl text-lg italic text-ink-soft">
+          No nos creas solo a nosotros: <a href="#verificar" className="font-semibold not-italic text-red underline decoration-2 underline-offset-4">verifica deudas e impuestos tú mismo en las páginas oficiales →</a>
+        </p>
       </div>
       <div className="mt-8 grid gap-6 lg:grid-cols-3">
         {Object.entries(checks).map(([k, list]) => (

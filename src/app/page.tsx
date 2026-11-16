@@ -5,6 +5,8 @@ import Listings from "@/components/Listings";
 import Guide from "@/components/Guide";
 import CreditCalculator from "@/components/CreditCalculator";
 import Verify from "@/components/Verify";
+import Verificador, { VerifyProvider } from "@/components/Verificador";
+import Ventajas from "@/components/Ventajas";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -14,6 +16,7 @@ import { VisitProvider } from "@/components/VisitModal";
 export default function Home() {
   return (
     <VisitProvider>
+    <VerifyProvider>
       <Header />
       <main>
         <Hero />
@@ -22,11 +25,14 @@ export default function Home() {
         <Guide />
         <CreditCalculator />
         <Verify />
+        <Verificador />
+        <Ventajas />
         <Faq />
         <Contact />
       </main>
       <Footer />
       <WhatsAppFab />
+    </VerifyProvider>
     </VisitProvider>
   );
 }
