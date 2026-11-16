@@ -12,9 +12,9 @@ export const waLink = (text = "Hola, quiero información") =>
 // Redes sociales: escribe solo el usuario, sin "@" (ej.: "lallave.bo").
 // Las que queden vacías no se muestran en el sitio.
 export const SOCIALS = {
-  instagram: "",
+  instagram: "lallave.bo",
   tiktok: "",
-  facebook: "",
+  facebook: "lallave.bo",
 };
 
 export const socialLinks = () =>
