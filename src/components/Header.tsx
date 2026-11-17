@@ -5,6 +5,8 @@ import { listings } from "@/data/listings";
 const links = [
   ["Para ti", "#para-ti"],
   ["Clasificados", "#explorar"],
+  ["VS", "#comparar"],
+  ["Reserva", "#reserva"],
   ["Lo que importa", "#datos"],
   ["Guía de compra", "#guia"],
   ["Crédito", "#credito"],

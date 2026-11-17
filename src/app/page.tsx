@@ -3,6 +3,8 @@ import Hero from "@/components/Hero";
 import Insights from "@/components/Insights";
 import Listings from "@/components/Listings";
 import Arquetipos from "@/components/Arquetipos";
+import Comparador from "@/components/Comparador";
+import Reserva from "@/components/Reserva";
 import Guide from "@/components/Guide";
 import CreditCalculator from "@/components/CreditCalculator";
 import Verify from "@/components/Verify";
@@ -20,6 +22,8 @@ export default function Home() {
         <Hero />
         <Arquetipos />
         <Listings />
+        <Comparador />
+        <Reserva />
         <Insights />
         <Guide />
         <CreditCalculator />
