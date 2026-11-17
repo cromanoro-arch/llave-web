@@ -33,11 +33,12 @@ export type Filtros = {
   comb: string;
   x4: boolean;
   orden: "" | "barato" | "caro";
+  para: string; // arquetipo de comprador (src/data/arquetipos.ts): "familia", "lujo"...
 };
 
 export const VACIO: Filtros = {
   tipo: "", ciudad: "", zona: "", moneda: "USD", min: 0, max: 0, dorm: 0, banos: 0, m2: 0, con: [],
-  marca: "", anio: 0, km: 0, trans: "", comb: "", x4: false, orden: "",
+  marca: "", anio: 0, km: 0, trans: "", comb: "", x4: false, orden: "", para: "",
 };
 
 const num = (v: string | null) => (v && Number(v) > 0 ? Number(v) : 0);
@@ -62,6 +63,7 @@ export function leer(q: string): Filtros {
     trans: p.get("trans") ?? "",
     comb: p.get("comb") ?? "",
     x4: p.get("x4") === "1",
+    para: p.get("para") ?? "",
     orden: p.get("orden") === "barato" || p.get("orden") === "caro" ? (p.get("orden") as "barato" | "caro") : "",
   };
 }
@@ -89,6 +91,7 @@ export function buscar(f: Filtros) {
 
 export function cumple(l: Listing, f: Filtros): boolean {
   if (f.tipo && l.type !== f.tipo) return false;
+  if (f.para && !l.para.includes(f.para as Listing["para"][number])) return false;
   if (f.ciudad && l.ciudad !== f.ciudad) return false;
   if (f.zona && l.zona !== f.zona) return false;
   if ((f.min || f.max) && !l.precioUsd) return false;

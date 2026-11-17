@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Insights from "@/components/Insights";
 import Listings from "@/components/Listings";
+import Arquetipos from "@/components/Arquetipos";
 import Guide from "@/components/Guide";
 import CreditCalculator from "@/components/CreditCalculator";
 import Verify from "@/components/Verify";
@@ -17,6 +18,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Arquetipos />
         <Listings />
         <Insights />
         <Guide />

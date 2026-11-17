@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { CIUDADES, ZONAS } from "@/data/zonas";
+import { arquetipo } from "@/data/arquetipos";
 import { EXTRAS, VACIO, TC, usd, bs, type Filtros as F } from "@/lib/filtros";
 
 const SECCIONES = [
@@ -38,11 +39,12 @@ export default function Filtros({ f, set, total, hay }: { f: F; set: (f: F) => v
   // Cambiar de sección borra los filtros que no aplican (ej. dormitorios al pasar a Autos).
   const cambiarTipo = (tipo: string) =>
     set(tipo === "Auto"
-      ? { ...VACIO, tipo, ciudad: f.ciudad, moneda: f.moneda, orden: f.orden }
+      ? { ...VACIO, tipo, ciudad: f.ciudad, moneda: f.moneda, orden: f.orden, para: f.para }
       : { ...f, tipo, marca: "", anio: 0, km: 0, trans: "", comb: "", x4: false, ...(tipo === "Terreno" ? { dorm: 0, banos: 0 } : {}),
           ...(f.tipo === "Auto" ? { min: 0, max: 0 } : {}) });
 
   const activos: [string, Partial<F>][] = [
+    ...(f.para ? [[`Para: ${arquetipo(f.para)?.corto ?? f.para}`, { para: "" }] as [string, Partial<F>]] : []),
     ...(f.zona ? [[f.zona, { zona: "" }] as [string, Partial<F>]] : f.ciudad ? [[f.ciudad, { ciudad: "" }] as [string, Partial<F>]] : []),
     ...(f.min ? [[`desde ${precio(f.min)}`, { min: 0 }] as [string, Partial<F>]] : []),
     ...(f.max ? [[`hasta ${precio(f.max)}`, { max: 0 }] as [string, Partial<F>]] : []),

@@ -3,6 +3,7 @@ import Today from "./Today";
 import { listings } from "@/data/listings";
 
 const links = [
+  ["Para ti", "#para-ti"],
   ["Clasificados", "#explorar"],
   ["Lo que importa", "#datos"],
   ["Guía de compra", "#guia"],

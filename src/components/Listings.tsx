@@ -3,6 +3,8 @@ import { listings } from "@/data/listings";
 import Icon from "./Icon";
 import { waLink, WHATSAPP } from "@/config";
 import { VisitButton } from "./VisitModal";
+import { arquetipo } from "@/data/arquetipos";
+import { pedir } from "./Arquetipos";
 
 import { useEffect, useState } from "react";
 import Filtros from "./Filtros";
@@ -37,6 +39,7 @@ export default function Listings() {
     window.history.replaceState(null, "", `${window.location.pathname}${escribir(n)}${window.location.hash}`);
   };
   const shown = aplicar(listings, f);
+  const yo = f.para ? arquetipo(f.para) : undefined;
   return (
     <section id="explorar" className="container-x py-12">
       <div className="flex flex-wrap items-end justify-between gap-3 rule-double pb-3">
@@ -44,6 +47,15 @@ export default function Listings() {
         <p className="label-mono">{listings.length} avisos · precio en USD y Bs · papeles revisados</p>
       </div>
       <Filtros f={f} set={cambiar} total={listings.length} hay={shown.length} />
+      {yo && (
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-2 border-ink bg-yel-tape p-4">
+          <div>
+            <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-red">Elegidos para ti · {yo.corto}</p>
+            <p className="h-cond mt-1 text-3xl">{yo.pregunta}</p>
+          </div>
+          <button onClick={() => pedir(yo.pedido)} className="btn-ink">¿No ves lo tuyo? Te lo buscamos</button>
+        </div>
+      )}
       {shown.length === 0 && (
         <div className="mt-8 border-2 border-dashed border-ink bg-paper-card p-8 text-center">
           <span className="stamp">Sin avisos</span>
@@ -67,10 +79,15 @@ export default function Listings() {
             </div>
             {l.tag && <span className="stamp absolute right-3 top-[132px]">{l.tag}</span>}
             <div className="flex flex-1 flex-col p-5">
-              <p className="font-head text-4xl font-black italic uppercase leading-none text-red">{l.price}</p>
-              {toBs(l.price) && <p className="mt-1 font-mono text-[11px] text-ink-mute">{toBs(l.price)} · TC oficial</p>}
-              <h3 className="mt-2 font-serif text-xl font-semibold leading-tight">{l.title}</h3>
+              <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-red">
+                Para: {arquetipo(f.para && l.para.includes(f.para as (typeof l.para)[number]) ? f.para : l.para[0])?.corto}
+                {l.para.length > 1 && <span className="text-ink-mute"> · y {l.para.length - 1} perfil{l.para.length > 2 ? "es" : ""} más</span>}
+              </p>
+              <h3 className="h-cond mt-2 text-[30px]">{l.gancho}</h3>
+              <p className="mt-3 font-serif text-lg font-semibold leading-tight">{l.title}</p>
               <p className="label-mono mt-1">{l.city}</p>
+              <p className="mt-3 font-head text-4xl font-black italic uppercase leading-none text-red">{l.price}</p>
+              {toBs(l.price) && <p className="mt-1 font-mono text-[11px] text-ink-mute">{toBs(l.price)} · TC oficial</p>}
               <dl className="mt-3 font-mono text-[12.5px]">
                 {l.specs.map((s) => (
                   <div key={s} className="flex gap-2 border-t border-ink py-1.5"><span className="text-red">■</span>{s}</div>
@@ -81,9 +98,9 @@ export default function Listings() {
               {l.verified && <p className="mt-3 bg-ink px-3 py-2 font-mono text-[11px] font-semibold uppercase text-yel">✓ {l.verified}</p>}
               <div className="mt-auto pt-4"><div className="grid grid-cols-2 border-2 border-ink">
                 <VisitButton title={`${l.title} · ${l.city}`} type={l.type} className="bg-red py-2.5 font-head text-base font-black uppercase text-white hover:bg-red-dark">
-                  {l.type === "Auto" ? "Agendar prueba" : "Agendar visita"}
+                  {l.cta}
                 </VisitButton>
-                <a href={waLink(`Hola, me interesa: ${l.title} (${l.price})`)} className="py-2.5 text-center font-head text-base font-black uppercase hover:bg-paper-dark">
+                <a href={waLink(`Hola, vi el aviso ${String(l.id).padStart(4, "0")} en La Llave: ${l.title} (${l.price}). ${l.gancho} Sí, quiero saber más.`)} className="py-2.5 text-center font-head text-base font-black uppercase hover:bg-paper-dark">
                   {WHATSAPP ? "WhatsApp" : "Consultar"}
                 </a>
               </div></div>
