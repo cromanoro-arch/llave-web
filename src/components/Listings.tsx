@@ -1,9 +1,13 @@
-import { listings as all } from "@/data/listings";
+"use client";
+import { listings } from "@/data/listings";
 import Icon from "./Icon";
 import { waLink, WHATSAPP } from "@/config";
 import { VisitButton } from "./VisitModal";
 
-const TC = 6.96;
+import { useEffect, useState } from "react";
+import Filtros from "./Filtros";
+import { aplicar, escribir, leer, EVENTO, VACIO, TC, type Filtros as F } from "@/lib/filtros";
+
 // Muestra el precio en la otra moneda (Ley 453: USD y Bs).
 const otherCurrency = (price: string) => {
   const n = Number(price.replace(/[^\d]/g, ""));
@@ -11,19 +15,50 @@ const otherCurrency = (price: string) => {
   const fmt = (x: number) => x.toLocaleString("es-BO", { maximumFractionDigits: 0 });
   return price.trim().startsWith("Bs") ? `≈ USD ${fmt(n / TC)}` : `Bs ${fmt(n * TC)}`;
 };
-// Los borradores solo se ven en las vistas previas de Vercel, no en el sitio publicado.
-const listings = process.env.VERCEL_ENV === "production" ? all.filter((l) => !l.draft) : all;
-const seccion: Record<string, string> = { Casa: "Casas", Departamento: "Deptos", Terreno: "Terrenos", Auto: "Autos" };
+const seccion: Record<string, string> = { Casa: "Casas", Departamento: "Deptos", Terreno: "Terrenos", Oficina: "Oficinas", Auto: "Autos" };
+// Línea "✓ Con": lo que tiene el aviso y que todavía no dice su ficha (para no repetir "Garaje").
+const conLabel = (l: (typeof listings)[number]) => {
+  const ficha = l.specs.join(" ").toLowerCase();
+  return [l.garaje ? `Garaje${l.garaje > 1 ? ` ${l.garaje} autos` : ""}` : "", l.terraza && "Terraza", l.jardin && "Jardín", l.amoblado && "Amoblado",
+    l.churrasquera && "Churrasquera", l.ascensor && "Ascensor", l.mascotas && "Acepta mascotas"]
+    .filter((x): x is string => !!x && !ficha.includes(x.split(" ")[0].toLowerCase()))
+    .join(" · ");
+};
 
 export default function Listings() {
+  const [f, setF] = useState<F>(VACIO);
+  // Lee la búsqueda de la dirección (enlace compartido o buscador de la portada).
+  useEffect(() => {
+    const leerUrl = () => setF(leer(window.location.search));
+    leerUrl();
+    window.addEventListener(EVENTO, leerUrl);
+    return () => window.removeEventListener(EVENTO, leerUrl);
+  }, []);
+  const cambiar = (n: F) => {
+    setF(n);
+    window.history.replaceState(null, "", `${window.location.pathname}${escribir(n)}${window.location.hash}`);
+  };
+  const shown = aplicar(listings, f);
   return (
     <section id="explorar" className="container-x py-12">
       <div className="flex flex-wrap items-end justify-between gap-3 rule-double pb-3">
         <h2 className="sec-tag">Clasificados</h2>
         <p className="label-mono">{listings.length} avisos · precio en USD y Bs · papeles revisados</p>
       </div>
+      <Filtros f={f} set={cambiar} total={listings.length} hay={shown.length} />
+      {shown.length === 0 && (
+        <div className="mt-8 border-2 border-dashed border-ink bg-paper-card p-8 text-center">
+          <span className="stamp">Sin avisos</span>
+          <p className="mt-4 font-head text-3xl font-black uppercase">Todavía no hay avisos con esa búsqueda</p>
+          <p className="mx-auto mt-2 max-w-xl text-ink-soft">Cada semana sumamos avisos nuevos. Prueba quitando algún filtro, o déjanos tu pedido y te avisamos cuando llegue.</p>
+          <div className="mt-5 flex flex-wrap justify-center gap-3">
+            <button onClick={() => cambiar({ ...VACIO, moneda: f.moneda })} className="btn-ink px-5 py-3">Ver todos los avisos</button>
+            <a href="#contacto" className="btn-red px-5">Avísame cuando llegue</a>
+          </div>
+        </div>
+      )}
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {listings.map((l) => (
+        {shown.map((l) => (
           <article key={l.id} className="relative flex flex-col border-2 border-ink bg-paper-card">
             <div className="halftone relative h-40 overflow-hidden border-b-2 border-ink">
               {l.images?.[0] && <img src={l.images[0]} alt={l.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />}
@@ -45,6 +80,7 @@ export default function Listings() {
                   <div key={s} className="flex gap-2 border-t border-ink py-1.5"><span className="text-red">■</span>{s}</div>
                 ))}
                 {l.extra && <div className="flex gap-2 border-t border-ink py-1.5"><span className="text-red">■</span>{l.extra}</div>}
+                {conLabel(l) && <div className="flex gap-2 border-t border-ink py-1.5"><span className="text-red">✓</span>{conLabel(l)}</div>}
               </dl>
               {l.images && l.images.length > 1 && (
                 <div className="mt-3 flex gap-1.5">
