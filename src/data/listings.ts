@@ -34,10 +34,17 @@ export type Listing = {
   transmision?: "Automática" | "Mecánica";
   combustible?: "Gasolina" | "Diésel" | "GNV" | "Híbrido" | "Eléctrico";
   traccion?: "4x2" | "4x4";
-  carroceria?: "SUV" | "Sedán" | "Camioneta" | "Hatchback" | "Vagoneta" | "Minibús";
+  carroceria?: "SUV" | "Sedán" | "Camioneta" | "Hatchback" | "Vagoneta" | "Minibús" | "Coupé";
+  /** Fotos en /public (la primera es la portada). */
+  images?: string[];
+  /** Borrador: se ve en las vistas previas, pero no en el sitio publicado hasta que el dueño apruebe la ficha. */
+  draft?: boolean;
 };
 
-export const listings: Listing[] = [
+const todos: Listing[] = [
+  { id: 8, type: "Auto", title: "Honda Civic Coupé 2018 automático", city: "La Paz", price: "Bs 150.000", specs: ["34.000 km", "Motor 2.0 i-VTEC", "Automático CVT", "Blanco, aros de aleación"], tag: "Papeles al día", hue: "from-slate-200 to-sky-100", icon: "car", photos: 5, extra: "Cámara de retroceso, climatizador y Bluetooth",
+    ciudad: "La Paz", precioUsd: 21552, marca: "Honda", anio: 2018, km: 34000, transmision: "Automática", combustible: "Gasolina", traccion: "4x2", carroceria: "Coupé",
+    images: [1, 2, 3, 4, 5].map((n) => `/avisos/honda-civic-2018/${n}.jpg`), draft: true },
   { id: 7, type: "Auto", title: "Renault Duster 2020", city: "La Paz", price: "Precio a consultar", specs: ["40.000 km", "Modelo 2020", "Gasolina", "SUV"], tag: "Papeles al día", hue: "from-amber-200 to-rose-100", icon: "car", photos: 0, verified: "RUAT e impuestos al día",
     ciudad: "La Paz", marca: "Renault", anio: 2020, km: 40000, combustible: "Gasolina", carroceria: "SUV" },
   { id: 1, type: "Casa", title: "Casa de 3 dormitorios con jardín", city: "Equipetrol Norte, Santa Cruz", price: "USD 95.000", specs: ["220 m² terreno", "3 dorm.", "2 baños", "Garaje 2 autos"], tag: "Folio real al día", hue: "from-emerald-200 to-teal-100", icon: "house", photos: 18, verified: "Folio real y alodial al 28/10/2026", extra: "Entrega inmediata",
@@ -53,3 +60,7 @@ export const listings: Listing[] = [
   { id: 6, type: "Auto", title: "Toyota Hilux 2019 diésel", city: "Santa Cruz", price: "USD 33.900", specs: ["92.000 km", "Diésel", "4x4", "Revisión mecánica"], tag: "Historial verificado", hue: "from-slate-200 to-sky-100", icon: "car", photos: 30, verified: "RUAT y chasis verificados al 31/10/2026", extra: "Inspección mecánica de 120 puntos",
     ciudad: "Santa Cruz", precioUsd: 33900, marca: "Toyota", anio: 2019, km: 92000, combustible: "Diésel", traccion: "4x4", carroceria: "Camioneta" },
 ];
+
+// Los borradores solo se ven en las vistas previas de Vercel, no en el sitio publicado
+// (LLAVE_ENV se fija al compilar en next.config.ts, así funciona también en componentes de cliente).
+export const listings: Listing[] = process.env.NEXT_PUBLIC_LLAVE_ENV === "production" ? todos.filter((l) => !l.draft) : todos;

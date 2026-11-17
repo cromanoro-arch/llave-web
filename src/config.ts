@@ -7,4 +7,4 @@ export const WHATSAPP = "";
 export const SHEETS_URL = "https://script.google.com/macros/s/AKfycbyvLT6FbETda_InRS9CcqOdt3HLKkB_mkYZIcBEnJ3e3I3phnrudt7hnlnKor_d12BK/exec";
 
 export const waLink = (text = "Hola, quiero información") =>
-  WHATSAPP ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}` : "#contacto";
+  WHATSAPP ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}` : "#consulta";

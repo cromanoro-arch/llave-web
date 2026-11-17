@@ -8,6 +8,7 @@ const links = [
   ["Guía de compra", "#guia"],
   ["Crédito", "#credito"],
   ["Consultorio", "#faq"],
+  ["Publica gratis", "#contacto"],
 ];
 
 const edicion = String(Math.max(...listings.map((l) => l.id))).padStart(4, "0");
