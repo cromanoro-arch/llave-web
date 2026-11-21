@@ -8,3 +8,18 @@ export const SHEETS_URL = "https://script.google.com/macros/s/AKfycbyvLT6FbETda_
 
 export const waLink = (text = "Hola, quiero información") =>
   WHATSAPP ? `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}` : "#contacto";
+
+// Redes sociales: escribe solo el usuario, sin "@" (ej.: "lallave.bo").
+// Las que queden vacías no se muestran en el sitio.
+export const SOCIALS = {
+  instagram: "lallave.bo",
+  tiktok: "lallave.bo",
+  facebook: "lallave.bo",
+};
+
+export const socialLinks = () =>
+  [
+    ["Instagram", SOCIALS.instagram, `https://instagram.com/${SOCIALS.instagram}`],
+    ["TikTok", SOCIALS.tiktok, `https://www.tiktok.com/@${SOCIALS.tiktok}`],
+    ["Facebook", SOCIALS.facebook, `https://facebook.com/${SOCIALS.facebook}`],
+  ].filter(([, user]) => user) as [string, string, string][];

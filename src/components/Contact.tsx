@@ -1,5 +1,6 @@
 import Icon from "./Icon";
 import ContactForm from "./ContactForm";
+import SocialLinks from "./SocialLinks";
 import { waLink, WHATSAPP } from "@/config";
 
 export default function Contact() {
@@ -14,6 +15,7 @@ export default function Contact() {
           </p>
           <p className="tape mt-6">Publicar es gratis</p>
           {WHATSAPP && <a href={waLink()} className="btn-ink mt-6 gap-2"><Icon name="chat" className="h-4 w-4" />Escribir por WhatsApp</a>}
+          <SocialLinks className="mt-6" />
         </div>
         <div className="p-8"><ContactForm /></div>
       </div>
